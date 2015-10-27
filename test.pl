@@ -19,20 +19,14 @@ use Cwd qw(abs_path);
 use lib '/Users/samyisok/Projects/perl-utils/lib';
 use Data::Dumper;
 
-use My::Megautils qw/is_int/;
+use My::Megautils qw/is_int print_sorted_hash_to_file/;
 my $i = 1;
 
 my %planets = (
-    Mercury => 0.4,
-    Venus   => 0.7,
-    Earth   => 1,
-    Mars    => 1.5,
     Ceres   => 2.77,
-    Jupiter => 5.2,
-    Saturn  => 9.5,
-    Uranus  => 19.6,
-    Neptune => 30,
+    Mercury => 0.4,
     Pluto   => 39,
+    Saturn  => 9.5,
     Charon  => 39,
 );
 
@@ -51,7 +45,6 @@ sub super_sort {
     my $fh;
     my $first_element;
     if ( @_ == 2 ) {
-        say "VAR 1";
         %option        = @_;
         %my_hash       = %{ $option{'hash'} };
         $fh            = $option{'file_holder'} ? $option{'file_holder'} : 0;
@@ -83,10 +76,11 @@ sub super_sort {
     }
 }
 
-#super_sort( 'hash' => \%sirno, 'file_holder' => $file_h );
-super_sort( %planets );
+print_sorted_hash_to_file( 'hash' => \%sirno, 'file_holder' => $file_h );
+#print_sorted_hash_to_file( %planets );
 
-say "HELLO"
+say "HELLO";
+
 
   #print map { scalar reverse $_ } sort reverse qw(6 10 3);
   #
